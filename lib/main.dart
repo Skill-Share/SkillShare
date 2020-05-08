@@ -5,6 +5,7 @@ import 'package:SkillShare/Views/settings_view.dart';
 import 'package:SkillShare/core/classes/bottom_nav.dart';
 import 'package:SkillShare/locator.dart';
 import 'package:SkillShare/routes.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -68,48 +69,23 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
 
-  BottomNavigationBar _bottomNavBar(Size screenSize) => BottomNavigationBar(
-    elevation: 10.0,
-    currentIndex: _currentIndex,
-    iconSize: screenSize.height/25, 
-    type: BottomNavigationBarType.fixed,
+  CurvedNavigationBar _bottomNavBar(Size screenSize) => CurvedNavigationBar(
     backgroundColor: Colors.white,
     onTap: (index){
       setState(() {
         _currentIndex = index;
       });
     },
+    buttonBackgroundColor: Colors.blue,
+    color: Colors.red,
     items: allNavs,
+    animationDuration: Duration(milliseconds: 400),
   );
 
-  List<BottomNavigationBarItem> allNavs = [
-    BottomNavigationBarItem(
-      icon: Icon(Icons.home),
-      title: Text(
-        "Home",
-        style: TextStyle( fontWeight: FontWeight.bold),
-      ),
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.person, ),
-      title: Text(
-        "Profiles",
-        style: TextStyle(),
-      ),
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.wrap_text, ),
-      title: Text(
-        "History",
-        style: TextStyle(),
-      ),
-    ),
-    BottomNavigationBarItem(
-      icon: Icon(Icons.settings, ),
-      title: Text(
-        "Settings",
-        style: TextStyle(),
-      ),
-    ),
+  List<Widget> allNavs = [
+    Icon(Icons.home),
+    Icon(Icons.person, ),
+    Icon(Icons.wrap_text, ),
+    Icon(Icons.settings, ),
   ];
 }
