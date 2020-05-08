@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
     print("state called");
     print(_currentIndex);
     return Scaffold(
-      body:  SafeArea(
+      body: SafeArea(
         top: false,
         child: IndexedStack(
           index: _currentIndex,
@@ -52,39 +52,44 @@ class _MyHomePageState extends State<MyHomePage> {
             onSystemBackButton(SettingsView()),
           ],
         ),
-        
       ),
       bottomNavigationBar: _bottomNavBar(_screenSize),
     );
   }
 
-  //this would take you back to home page 
-  WillPopScope onSystemBackButton(Widget view) => WillPopScope(child: view, onWillPop: () => onNavTapped(0));
+  //this would take you back to home page
+  WillPopScope onSystemBackButton(Widget view) =>
+      WillPopScope(child: view, onWillPop: () => onNavTapped(0));
 
-  onNavTapped(int index){
+  onNavTapped(int index) {
     setState(() {
       _currentIndex = index;
     });
   }
 
-
   CurvedNavigationBar _bottomNavBar(Size screenSize) => CurvedNavigationBar(
-    backgroundColor: Colors.white,
-    onTap: (index){
-      setState(() {
-        _currentIndex = index;
-      });
-    },
-    buttonBackgroundColor: Colors.blue,
-    color: Colors.red,
-    items: allNavs,
-    animationDuration: Duration(milliseconds: 400),
-  );
+        backgroundColor: Colors.white,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        buttonBackgroundColor: Colors.blue,
+        color: Colors.red,
+        items: allNavs,
+        animationDuration: Duration(milliseconds: 400),
+      );
 
   List<Widget> allNavs = [
     Icon(Icons.home),
-    Icon(Icons.person, ),
-    Icon(Icons.wrap_text, ),
-    Icon(Icons.settings, ),
+    Icon(
+      Icons.person,
+    ),
+    Icon(
+      Icons.wrap_text,
+    ),
+    Icon(
+      Icons.settings,
+    ),
   ];
 }
