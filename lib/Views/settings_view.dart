@@ -1,7 +1,5 @@
 
 import 'package:SkillShare/Views/base_view.dart';
-import 'package:SkillShare/core/View_Models/data_view_model.dart';
-import 'package:SkillShare/core/View_Models/profiles_view_model.dart';
 import 'package:SkillShare/core/View_Models/settings_view_model.dart';
 import 'package:flutter/material.dart';
 

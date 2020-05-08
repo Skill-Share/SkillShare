@@ -1,5 +1,4 @@
 import 'package:SkillShare/Views/404_view.dart';
-import 'package:SkillShare/Views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

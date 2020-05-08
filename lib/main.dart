@@ -2,7 +2,6 @@ import 'package:SkillShare/Views/data_view.dart';
 import 'package:SkillShare/Views/home_view.dart';
 import 'package:SkillShare/Views/profiles_view.dart';
 import 'package:SkillShare/Views/settings_view.dart';
-import 'package:SkillShare/core/classes/bottom_nav.dart';
 import 'package:SkillShare/locator.dart';
 import 'package:SkillShare/routes.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
