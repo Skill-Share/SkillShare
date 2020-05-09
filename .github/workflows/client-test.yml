@@ -1,11 +1,8 @@
 name: Client Tests
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
-      - master
+      - dev
 jobs:
   test:
     name: Test client on ${{ matrix.os }}
