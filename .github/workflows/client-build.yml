@@ -1,11 +1,8 @@
 name: Client Build
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
-      - master
+      - dev
 jobs:
   buildios:
     name: Build iOS app
