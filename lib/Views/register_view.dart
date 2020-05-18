@@ -1,22 +1,20 @@
-
-import 'package:SkillShare/Views/register_view.dart';
 import 'package:SkillShare/core/service/authentication/auth_service.dart';
 import 'package:flutter/material.dart';
 
-class Loginview extends StatefulWidget {
+class RegisterView extends StatefulWidget {
   @override
-  _LoginviewState createState() => _LoginviewState();
+  _RegisterViewState createState() => _RegisterViewState();
 }
 
-class _LoginviewState extends State<Loginview> {
+class _RegisterViewState extends State<RegisterView> {
+  Authservice _auth = Authservice();
   String email = '';
-  String password = '';
+  String password ='';
   String error = '';
   final _formkey = GlobalKey<FormState>();
-  final Authservice _auth = Authservice();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  Scaffold(
         body: Container(
             color: Colors.deepOrangeAccent,
             height: MediaQuery.of(context).size.height,
@@ -26,10 +24,12 @@ class _LoginviewState extends State<Loginview> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
 //       THIS IS TO DISPLAY THE ERROR WHEN THERE IS AN ERROR SIGNING IN 
+
                  SizedBox(
                    height: 20,
                    child: Text(error, style: TextStyle(color: Colors.white),),
                  ),
+
 //    BEGINNING OF  THE FORM FIELD
                 Form(
                   key: _formkey,
@@ -63,7 +63,6 @@ class _LoginviewState extends State<Loginview> {
                       ),
 //      THE CONTAINER HOUSING THE PASSWORD INPUT
 
-
                Container(
                  padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: TextFormField(
@@ -92,46 +91,40 @@ class _LoginviewState extends State<Loginview> {
                           color: Colors.black12 ,
                           padding: const EdgeInsets.symmetric(horizontal: 120),
                           onPressed: () async{
-                                   if (_formkey.currentState.validate()) {
-                                  var result = await _auth.signWithEmailandPassword(email, password);
-                                  if(result == null){
-                                    setState(() {
-                                      error = "invalid email or password";
-                                    });
-                                  }
-                                }  
+                              if (_formkey.currentState.validate()) {
+                               await _auth.registerWithEmailandPassword(email, password);
+                              }
+                            
                               
                           }, 
-                          child: Text("LOGIN", style: TextStyle(
+                          child: Text("SIGN UP", style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 20
                           ),))
                           ,
                           SizedBox(height: 29,),
-//        THE BUTTON TO LEAD THE USER TO THE  SIGN UP PAGE
+//    THIS ALLOWS THE USER TO LOGOIN WITHOUT INPUTING THE EMAIL OR PASSWORD
 
                           FlatButton(
                           color: Colors.black12 ,
                           padding: const EdgeInsets.symmetric(horizontal: 20),
-                          onPressed: () {
-                               Navigator.pushReplacement(
-                                 context, new MaterialPageRoute(builder: (context)=> RegisterView() ));
-                            },
-                          child: Text("dont have an account? Sign Up", style: TextStyle(
+                          onPressed: () async{
+                               _auth.signinAnon();
+                          }, 
+                          child: Text("Sign in anonymously", style: TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 17
                           ),))
                           ,
-                          
+                             
                     ],
                   ))
               ],
             ),
           ),
         );
-    
     
   }
 }
