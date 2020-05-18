@@ -1,15 +1,16 @@
 name: Compare APK
 on:
   pull_request:
-    branches: [ master ]
+    branches:
+      - dev
 jobs:
-  build-master:
+  build-dev:
     name: Build master Android app
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
         with:
-          ref: master
+          ref: dev
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
