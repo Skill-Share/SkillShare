@@ -1,9 +1,11 @@
 
-import 'package:SkillShare/Views/register_view.dart';
+
 import 'package:SkillShare/core/service/authentication/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class Loginview extends StatefulWidget {
+  final Function toggleView;
+  Loginview({this.toggleView});
   @override
   _LoginviewState createState() => _LoginviewState();
 }
@@ -42,7 +44,6 @@ class _LoginviewState extends State<Loginview> {
                         child: TextFormField(
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email, color: Colors.white,),
-                            hasFloatingPlaceholder: true,
                               hintText: 'E-mail',
                               hintStyle: TextStyle(
                                 color: Colors.white
@@ -115,8 +116,7 @@ class _LoginviewState extends State<Loginview> {
                           color: Colors.black12 ,
                           padding: const EdgeInsets.symmetric(horizontal: 20),
                           onPressed: () {
-                               Navigator.pushReplacement(
-                                 context, new MaterialPageRoute(builder: (context)=> RegisterView() ));
+                              widget.toggleView();
                             },
                           child: Text("dont have an account? Sign Up", style: TextStyle(
                             color: Colors.white,

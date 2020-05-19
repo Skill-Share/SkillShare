@@ -2,7 +2,10 @@ import 'package:SkillShare/core/service/authentication/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class RegisterView extends StatefulWidget {
+   final Function toggleView;
+  RegisterView({this.toggleView});
   @override
+
   _RegisterViewState createState() => _RegisterViewState();
 }
 
@@ -42,7 +45,6 @@ class _RegisterViewState extends State<RegisterView> {
                         child: TextFormField(
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email, color: Colors.white,),
-                            hasFloatingPlaceholder: true,
                               hintText: 'E-mail',
                               hintStyle: TextStyle(
                                 color: Colors.white
