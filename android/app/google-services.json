@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "436602686443",
+    "firebase_url": "https://skillshare-79e1d.firebaseio.com",
+    "project_id": "skillshare-79e1d",
+    "storage_bucket": "skillshare-79e1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436602686443:android:b60db800c48ffc5ae9a7ae",
+        "android_client_info": {
+          "package_name": "com.example.SkillShare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436602686443-mhghild1ta0lijlo4g5ghhc75ohm3sdd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChs-iVkAsPdnQRZdFkCHRU5KYJfiS6Y98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436602686443-mhghild1ta0lijlo4g5ghhc75ohm3sdd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
