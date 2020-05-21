@@ -1,5 +1,7 @@
 import 'package:SkillShare/core/service/authentication/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:form_field_validator/form_field_validator.dart';
+
 
 class RegisterView extends StatefulWidget {
    final Function toggleView;
@@ -14,6 +16,15 @@ class _RegisterViewState extends State<RegisterView> {
   String email = '';
   String password ='';
   String error = '';
+  final passwordValidator = MultiValidator([  
+    RequiredValidator(errorText: 'password is required'),  
+    MinLengthValidator(8, errorText: 'password must be at least 8 digits long'),  
+
+ ]);  
+ final emailValidator = MultiValidator([
+   RequiredValidator(errorText: null),
+   EmailValidator(errorText: 'invalid email' )
+ ]);
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -50,9 +61,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 color: Colors.white
                               ),
                               ),
-                          validator: (val)
-                             => val.isEmpty ?  'input a valid mail' : null
-                          ,
+                          validator: emailValidator,
                           onChanged: (val){
                             setState(() {
                              email = val;
@@ -75,9 +84,7 @@ class _RegisterViewState extends State<RegisterView> {
                                 color: Colors.white
                               ),
                               ),
-                                  validator: (val)
-                                  =>  val.isEmpty ?  'input a valid password' : null
-                                  ,
+                                  validator: passwordValidator,
                                   obscureText: true,
                                   onChanged: (val){
                                     setState(() {
