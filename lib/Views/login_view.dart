@@ -1,6 +1,7 @@
 
 
 import 'package:SkillShare/core/service/authentication/auth_service.dart';
+import 'package:SkillShare/widgets/loading.dart';
 import 'package:flutter/material.dart';
 
 class Loginview extends StatefulWidget {
@@ -14,11 +15,12 @@ class _LoginviewState extends State<Loginview> {
   String email = '';
   String password = '';
   String error = '';
+  bool loading = false;
   final _formkey = GlobalKey<FormState>();
   final Authservice _auth = Authservice();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading? Loading() : Scaffold(
         body: Container(
             color: Colors.deepOrangeAccent,
             height: MediaQuery.of(context).size.height,
@@ -94,9 +96,13 @@ class _LoginviewState extends State<Loginview> {
                           padding: const EdgeInsets.symmetric(horizontal: 120),
                           onPressed: () async{
                                    if (_formkey.currentState.validate()) {
+                                     setState(() {
+                                       loading = true;
+                                     });
                                   var result = await _auth.signWithEmailandPassword(email, password);
                                   if(result == null){
                                     setState(() {
+                                      loading = false;
                                       error = "invalid email or password";
                                     });
                                   }
